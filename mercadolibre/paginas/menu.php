@@ -18,7 +18,6 @@ if (isset($_SESSION['rolNombre'])) {
 
 <!-- Bootstrap 5 -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="bootstrap/icons/bootstrap-icons.css" rel="stylesheet">
 
 <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm mlibre-nav">
   <div class="container">
