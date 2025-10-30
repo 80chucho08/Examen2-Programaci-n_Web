@@ -30,10 +30,7 @@
         <h5 class="fw-bold">Enlaces rápidos</h5>
         <ul class="list-unstyled">
           <li class="mb-1"><a class="link-dark link-opacity-75-hover text-decoration-none" href="inicio.php">Inicio</a></li>
-          <li class="mb-1"><a class="link-dark link-opacity-75-hover text-decoration-none" href="inicio.php?op=productos">Productos</a></li>
-          <li class="mb-1"><a class="link-dark link-opacity-75-hover text-decoration-none" href="inicio.php?op=abcproductos">Admin Productos</a></li>
-          <li class="mb-1"><a class="link-dark link-opacity-75-hover text-decoration-none" href="inicio.php?op=acceso">Mi sesión</a></li>
-          <li class="mb-1"><a class="link-dark link-opacity-75-hover text-decoration-none" href="#" id="pfGoTopLink">Volver arriba</a></li>
+          <li class="mb-1"><a class="link-dark link-opacity-75-hover text-decoration-none" href="inicio.php?op=rptProducto">Productos</a></li>
         </ul>
       </div>
 
@@ -46,26 +43,7 @@
         </ul>
       </div>
 
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="card border-0 shadow-sm bg-light-subtle rounded-4 hover-lift">
-          <div class="card-body">
-            <h6 class="fw-bold mb-2 text-primary">Suscríbete</h6>
-            <p class="text-secondary small mb-3">Recibe avisos de prácticas y actividades semanales.</p>
-            <form class="needs-validation" novalidate onsubmit="event.preventDefault(); pfNewsletterThanks();">
-              <div class="input-group">
-                <span class="input-group-text bg-light"><i class="bi bi-envelope"></i></span>
-                <input type="email" class="form-control" placeholder="Correo institucional" required>
-              </div>
-              <button class="btn btn-mlibre w-100 mt-2 fw-semibold" type="submit">
-                Suscribirme <i class="bi bi-check2-circle ms-1"></i>
-              </button>
-              <div class="invalid-feedback d-block small mt-2" style="display:none;" id="pfEmailError">
-                Por favor, ingresa un correo institucional válido.
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+      
     </div>
 
     <hr class="border-secondary-subtle my-4">

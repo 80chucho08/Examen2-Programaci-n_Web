@@ -47,17 +47,6 @@ if (isset($_SESSION['rolNombre'])) {
           </a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link nav-hover <?= isActive('abcproductos.php',$current) ?>" href="inicio.php?op=abcproductos">
-            <i class="bi bi-pencil-square me-1"></i>Admin
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link nav-hover <?= isActive('acceso.php',$current) ?>" href="inicio.php?op=acceso">
-            <i class="bi bi-person-circle me-1"></i>Mi sesión
-          </a>
-        </li>
 
         <?php if (isset($_SESSION['nomUsuario'])): ?>
         <li class="nav-item d-flex align-items-center ms-3 text-dark user-info">
@@ -75,11 +64,7 @@ if (isset($_SESSION['rolNombre'])) {
         </li>
         <?php endif; ?>
 
-        <li class="nav-item ms-lg-3">
-          <a class="btn btn-mlibre px-3 fw-semibold shadow-sm btn-anim" href="contacto.php">
-            ¡Comprar ahora! <i class="bi bi-bag-check ms-1"></i>
-          </a>
-        </li>
+        
 
       </ul>
     </div>
