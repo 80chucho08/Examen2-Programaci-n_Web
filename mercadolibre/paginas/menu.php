@@ -3,17 +3,9 @@
 $current = basename($_SERVER['PHP_SELF']);
 function isActive($page, $current) { return $page === $current ? 'active' : ''; }
 
-$imagenUsuario = 'imagenes/usuarios/usuUser.png'; // valor por defecto
 
-if (isset($_SESSION['rolNombre'])) {
-    $rol = strtoupper(trim($_SESSION['rolNombre'])); // normaliza el texto
 
-    if ($rol === 'ADMINISTRADOR' || $rol === '1') {
-        $imagenUsuario = 'imagenes/usuarios/usuAdmin.png';
-    } else {
-        $imagenUsuario = 'imagenes/usuarios/usuUser.png';
-    }
-}
+
 ?>
 
 <!-- Bootstrap 5 -->
@@ -46,10 +38,15 @@ if (isset($_SESSION['rolNombre'])) {
           </a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link nav-hover <?= isActive('acceso.php',$current) ?>" href="inicio.php?op=acceso">
+            <i class="bi bi-person-circle me-1"></i>Mi sesión
+          </a>
+        </li>
+
 
         <?php if (isset($_SESSION['nomUsuario'])): ?>
         <li class="nav-item d-flex align-items-center ms-3 text-dark user-info">
-          <img src="<?= $imagenUsuario ?>" alt="usuario" class="rounded-circle me-2 border border-2 border-warning" width="40" height="40">
           <div class="d-flex flex-column">
             <small><strong><?= $_SESSION['nomUsuario'] ?></strong></small>
             <small class="text-muted">(<?= $_SESSION['usuUsuario'] ?> – <?= $_SESSION['rolNombre'] ?>)</small>
