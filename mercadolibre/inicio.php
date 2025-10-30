@@ -10,7 +10,6 @@ $pagina = isset($_GET['op']) ? strtolower($_GET['op']) : 'bienvenida';
 // Incluir el menú
 require_once 'paginas/menu.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
