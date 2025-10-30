@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 $usuario = "";
 $contrasena = "";
@@ -22,19 +22,19 @@ if (!empty($_POST['txtUsuario']) && !empty($_POST['txtContrasena'])) {
         if ((int)$datos[0]["BAN"] != 0) {
             // Usuario válido: asigna sesión sin condicionales
             $_SESSION['cveUsuario'] = $datos[1]["CVE"];
-            $_SESSION['nomUsuario'] = $datos[2]["NOM"]; // ahora sí guarda el nombre
+            $_SESSION['nomUsuario'] = $datos[2]["NOM"]; 
             $_SESSION['usuUsuario'] = $datos[3]["USU"];
             $_SESSION['rolNombre']  = $datos[4]["ROL"];
 
-            // Guarda un mensaje de bienvenida en sesión para mostrar en inicio.php
+            // Guarda un mensaje de bienvenida
             $_SESSION['mensajeBienvenida'] = "Bienvenido " . $_SESSION['nomUsuario'] . "!";
 
-            // Redirecciona a inicio.php
+            // Redirecciona
             header("Location: inicio.php");
             exit;
 
         } else {
-            // Usuario no encontrado: limpia sesión
+            // Usuario no encontrado
             session_unset();
             session_destroy();
 
@@ -44,7 +44,7 @@ if (!empty($_POST['txtUsuario']) && !empty($_POST['txtContrasena'])) {
         }
 
     } catch (Exception $e) {
-        // Manejo de error por falla en el servicio web
+        // Manejo de error
         $_SESSION['mensajeError'] = "Error al conectar con el servicio web: " . $e->getMessage();
         header("Location: inicio.php?op=acceso");
         exit;
@@ -52,68 +52,76 @@ if (!empty($_POST['txtUsuario']) && !empty($_POST['txtContrasena'])) {
 }
 ?>
 
-
-<html>
-
+<!DOCTYPE html>
+<html lang="es">
 <head>
-
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<!--se agrega un link para acceder a los archivos compilados y comprimidos de bootstratp-->
-	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Acceso - MercadoApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* ======== ESTILO MERCADO LIBRE CON BOOTSTRAP ======== */
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .login-container {
+            max-width: 420px;
+            margin: 80px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .login-header {
+            background-color: #FFE600;
+            color: #333;
+            text-align: center;
+            padding: 1.2rem;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        .form-control:focus {
+            border-color: #3483FA;
+            box-shadow: 0 0 0 0.25rem rgba(52,131,250,0.25);
+        }
+        .btn-primary {
+            background-color: #3483FA;
+            border-color: #3483FA;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background-color: #296de8;
+        }
+    </style>
 </head>
-
 <body>
-	<form id="frmAcceso" method="POST">
 
-		<div class="container">
-			<table width="800px" align="center">
-				<tr>
-					<td>
-						<table align="center">
-							<tr rowspan="3">
-								<td colspan="2" align="center">
-									<hr style="color:#102C54" />
-								</td>
-							</tr>
-							<tr rowspan="3">
-								<td colspan="2" align="center">
-									<h1>Consumir servicio Web</h1>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2"><br /></td>
-							</tr>
-							<tr>
-								<td>Usuario:</td>
-								<td>
-									<input type="text" name="txtUsuario" class="form-control" placeholder="Nombre de usuario">
-								</td>
-							</tr>
-							<tr>
-								<td>Contraseña:</td>
-								<td>
-									<input type="text" name="txtContrasena" class="form-control" placeholder="Nombre de usuario">
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2" align="center"><br>
-									<input type="submit" value="Aceptar" class="btn btn-primary">
-									<input type="button" value="Cancelar" class="btn btn-primary">
-								</td>
-							</tr>
-							<tr rowspan="3">
-								<td colspan="2" align="center">
-									<hr style="color:#102C54" />
-								</td>
-							</tr>
-						</table>
-					</td>
-					<td>
-					</td>
-				</tr>
-			</table>
-		</div>
-	</form>
+<div class="login-container">
+    <div class="login-header">Acceso al Sistema</div>
+    <div class="p-4">
+        <form id="frmAcceso" method="POST">
+            <div class="mb-3">
+                <label for="txtUsuario" class="form-label fw-semibold">Usuario</label>
+                <input type="text" name="txtUsuario" id="txtUsuario" class="form-control" placeholder="Nombre de usuario" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="txtContrasena" class="form-label fw-semibold">Contraseña</label>
+                <input type="password" name="txtContrasena" id="txtContrasena" class="form-control" placeholder="Contraseña" required>
+            </div>
+
+            <div class="d-grid gap-2 mt-4">
+                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                <a href="inicio.php" class="btn btn-outline-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
-
 </html>
